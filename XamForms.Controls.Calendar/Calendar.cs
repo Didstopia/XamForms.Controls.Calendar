@@ -376,17 +376,9 @@ namespace XamForms.Controls
 
 		#region Functions
 
-		protected async override void OnParentSet()
+		protected override void OnParentSet()
 		{
-			if (Device.OS == TargetPlatform.Windows || Device.OS == TargetPlatform.WinPhone)
-			{
-				FillCalendarWindows();
-			}
-			else {
-				// iOS and Android can create controls on another thread when they are not attached to the main ui yet, 
-				// windows can not
-				await FillCalendar();
-			}
+			FillCalendarWindows();
 			base.OnParentSet();
 			ChangeCalendar(CalandarChanges.All);
 		}
